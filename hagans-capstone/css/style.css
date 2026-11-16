@@ -1,0 +1,211 @@
+/* =====================================================================
+   Color palette
+   bg:       #ffffff   (White)
+   surface:  #f8f9fa   (Light grey)
+   text:     #1a1a1a   (Near black)
+   primary:  #d32f2f   (Power red)
+   accent:   #212121   (Dark charcoal)
+   ===================================================================== */
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+/* Hierarchy for headings (WHAT IT IS).
+   Uses clamp for fluid sizes (WHAT IT DOES).
+   This Makes text fit any screen (WHAT IT MEANS). */
+h1, h2, h3 { 
+  font-family: "Playfair Display", Georgia, serif; 
+  line-height: 1.1; 
+  margin: 0;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); color: #d32f2f; }
+p { font-size: clamp(1rem, 1.2vw, 1.125rem); max-width: 65ch; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* Buttons (WHAT IT IS).
+   Styles the action buttons (WHAT IT DOES).
+   Provides visual feedback with interaction (WHAT IT MEANS). */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #b71c1c;
+}
+
+.btn-secondary {
+  background-color: #212121;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #000;
+}
+
+/* Header (WHAT IT IS).
+   Sticky top navigation (WHAT IT DOES).
+   Shows when scrolling (WHAT IT MEANS). */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 2px solid #d32f2f;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+#primary-nav {
+  display: flex;
+  gap: 20px;
+}
+
+#primary-nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+#primary-nav a:hover {
+  color: #d32f2f;
+}
+
+/* Hero (WHAT IT IS).
+   Intro section (WHAT IT DOES).
+   Makes a strong first impression (WHAT IT MEANS). */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+}
+
+.hero h1 { margin-bottom: 1rem; }
+.hero p { margin: 0 auto 2rem auto; }
+.hero-btns { display: flex; gap: 15px; justify-content: center; }
+
+/* Grid (WHAT IT IS).
+   Layout for feature cards (WHAT IT DOES).
+   Organizes the information in a clean way (WHAT IT MEANS). */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+/* Footer (WHAT IT IS).
+   Bottom area where copyright and links are shown (WHAT IT DOES).
+   Shows copyright and basic links (WHAT IT MEANS). */
+.site-footer {
+  background: #212121;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Accessibility (WHAT IT IS).
+   Focus rings (WHAT IT DOES).
+   Helps keyboard users navigate (WHAT IT MEANS). */
+:focus-visible {
+  outline: 3px solid #d32f2f;
+  outline-offset: 3px;
+}
+
+/* Mobile Nav (WHAT IT IS).
+   Hamburger menu for phones (WHAT IT DOES).
+   Saves screen space (WHAT IT MEANS). */
+.menu-toggle { 
+  display: none; 
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .menu-toggle { display: block; }
+  #primary-nav {
+    position: fixed; 
+    top: 60px; right: 0; bottom: 0;
+    width: 250px; 
+    background: #fff;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+  body.menu-open #primary-nav { transform: translateX(0); }
+}
+
+/* Reduced Motion (WHAT IT IS).
+   Stops movement (WHAT IT DOES).
+   Prevents nausea for the user (WHAT IT MEANS). */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
